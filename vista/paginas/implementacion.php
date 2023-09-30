@@ -3,7 +3,7 @@
     include_once("../estructura/encabezado.php");
 ?>
 
-<h1 class="text-white">IMPLEMENTACIÓN</h1>
+<h1>IMPLEMENTACIÓN</h1>
 <div>
     <form action="../accion/formAccion.php" method="post" class="needs-validation" novalidate>
         <div class="form-group">
@@ -37,10 +37,11 @@
             </div>
         </div>
         <br>
-        <input type="submit" class="btn btn-primary">
+        <input type="submit" class="btn btn-dark">
     </form>
     <script src="../js/function.js"></script>
 </div>
+
 <?php
     include_once("../estructura/pie.php");
 ?>

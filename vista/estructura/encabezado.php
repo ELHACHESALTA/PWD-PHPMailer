@@ -14,7 +14,7 @@
     </head>
     <body>
         <!-- Barra Superior INICIO -->
-        <nav class="navbar bg-dark bg-gradient navbar-expand-lg navbar-dark p-md-3">
+        <nav class="navbar bg-dark bg-gradient navbar-expand-lg navbar-dark position-absolute top-0 w-100">
             <div class="container-fluid">
                 <a href="inicio.php" class="navbar-brand">PHPMailer</a>
 
@@ -50,9 +50,9 @@
         <!-- Barra Superior FIN -->
 
         <!-- Banner de Fondo INICIO -->
-        <div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
-            <div class="content text-center">
+        <div class="banner-image w-100 vh-100 d-flex justify-content-center overflow-auto">
+            <div class="content text-center mt-5">
 
                 <!-- Contenido Principal INICIO -->
-                <div class="container my-5 d-grid gap-5">
-                    <div class="p-5 border text-white">
+                <div class="container mt-2 my-5 d-grid gap-5">
+                    <div class="p-5 border border-dark mt-5">
