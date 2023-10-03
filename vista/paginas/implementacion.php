@@ -4,42 +4,14 @@
 ?>
 
 <h1>IMPLEMENTACIÓN</h1>
-<div>
-    <form action="../accion/formAccion.php" method="post" class="needs-validation" novalidate>
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" class="form-control" required pattern="^[a-zA-Z][a-zA-Z\s]*$">
-            <div class="valid-feedback">
-                Correcto.
-            </div>
-            <div class="invalid-feedback">
-                Ingrese su nombre.
-            </div>
+<div class="row justify-content-center">
+    <div class="col-10">
+        <div class="list-group">
+            <a href="implementacionBasica.php" class="list-group-item list-group-item-action list-group-item-dark">Envío Correo Estándar</a>
+            <a href="implementacionAdjunto.php" class="list-group-item list-group-item-action list-group-item-dark">Envío con archivo adjunto</a>
+            <a href="implementacionBD.php" class="list-group-item list-group-item-action list-group-item-dark">Envío con Base de Datos</a>
         </div>
-        <div class="form-group">
-            <label for="asunto">Asunto:</label>
-            <input type="text" id="asunto" name="asunto" class="form-control" required pattern="^[a-zA-Z][\w\s]*$">
-            <div class="valid-feedback">
-                Correcto.
-            </div>
-            <div class="invalid-feedback">
-                Ingrese el asunto del correo a enviar.
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="cuerpo">Cuerpo del Mail:</label>
-            <input type="text" id="cuerpo" name="cuerpo" class="form-control" required pattern="^[a-zA-Z][a-zA-Z0-9\s]*$">
-            <div class="valid-feedback">
-                Correcto.
-            </div>
-            <div class="invalid-feedback">
-                Ingrese el cuerpo del correo.
-            </div>
-        </div>
-        <br>
-        <input type="submit" class="btn btn-dark">
-    </form>
-    <script src="../js/function.js"></script>
+    </div>
 </div>
 
 <?php
