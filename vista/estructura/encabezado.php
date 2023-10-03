@@ -34,13 +34,13 @@
                     <div class="mx-auto"></div>
                     <ul class="navbar-nav align-items-end">
                         <li class="nav-item">
-                            <a href="inicio.php" class="nav-link text-white">Inicio</a>
+                            <a href="../paginas/inicio.php" class="nav-link text-white">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a href="investigacion.php" class="nav-link text-white">Investigación</a>
+                            <a href="../paginas/investigacion.php" class="nav-link text-white">Investigación</a>
                         </li>
                         <li class="nav-item">
-                            <a href="implementacion.php" class="nav-link text-white">Implementación</a>
+                            <a href="../paginas/implementacion.php" class="nav-link text-white">Implementación</a>
                         </li>
                     </ul>
                 </div>
