@@ -5,12 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo $tituloPagina ?></title>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <style>
-            .banner-image{
-                background-image: url(../img/banner-img.jpg);
-                background-size: cover;
-            }
-        </style>
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
         <!-- Barra Superior INICIO -->

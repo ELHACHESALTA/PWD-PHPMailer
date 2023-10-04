@@ -34,7 +34,6 @@
         $directorys = array(
             $_SESSION['ROOT'].'modelo/',
             $_SESSION['ROOT'].'control/',
-            $GLOBALS['ROOT'].'util/class/',
         );
         foreach($directorys as $directory) {
             if (file_exists($directory.$class_name . '.php')) {

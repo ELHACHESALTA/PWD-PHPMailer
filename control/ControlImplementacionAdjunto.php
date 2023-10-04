@@ -5,9 +5,9 @@
     class ControlImplementacionAdjunto {
         function enviarCorreo($datos){
             if (!copy($datos[0]["archivoAdjunto"]["tmp_name"], "../../archivos/".$datos[0]["archivoAdjunto"]["name"])) {
-                echo "ERROR: no se pudo cargar el archivo";
+                $respuesta = "ERROR: no se pudo cargar el archivo";
             } else {
-                echo "Se pudo cargar el archivo exitosamente!";
+                $respuesta = "Se pudo cargar el archivo exitosamente!";
             }
             $mail = new PHPMailer();
             //Server settings
@@ -35,9 +35,9 @@
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         
             if($mail->send()){
-                $respuesta = 'El mensaje se ha enviado con exito!';
+                $respuesta .= " <br> El mensaje se ha enviado con exito!";
             } else {
-                $respuesta = "El mensaje no se ha podido enviar. El error es: {$mail->ErrorInfo}";
+                $respuesta .= " <br> El mensaje no se ha podido enviar. El error es: {$mail->ErrorInfo}";
             }
             return $respuesta;
         }
