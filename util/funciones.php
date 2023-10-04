@@ -9,6 +9,11 @@
                 $_AAux = $_GET;
             }
         }
+        // bloque agregado
+        if (!empty($_FILES)){
+            array_push($_AAux, $_FILES);
+        }
+        // fin de bloque agregado
         if (count($_AAux)) {
             foreach ($_AAux as $indice => $valor) {
                 if ($valor == "") {
