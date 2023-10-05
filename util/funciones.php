@@ -33,6 +33,7 @@
     spl_autoload_register(function($class_name) {
         $directorys = array(
             $_SESSION['ROOT'].'modelo/',
+            $_SESSION['ROOT'].'modelo/conector/',
             $_SESSION['ROOT'].'control/',
         );
         foreach($directorys as $directory) {
