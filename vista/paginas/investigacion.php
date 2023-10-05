@@ -3,6 +3,7 @@
     include_once("../estructura/encabezado.php");
 ?>
 
+<button class="btn btn-lg text-center"><i class="bi bi-arrow-left-circle"></i></button>
 <h1 class="mb-5 fw-bold">Investigación</h1>
 <div class="accordion" id="investigacion">
     <div class="accordion-item bg-transparent border border-dark">
@@ -46,6 +47,31 @@
                     <li>Usar <b>Composer</b> para descargar PHPMailer y crear automáticamente un archivo de carga automática. Esto es sumamente útil si se trabaja con varias librerías, ya que Composer se encarga de todos los pasos de descarga, actualización y verificación de dependencias.</li>
                     <li>Descargar manualmente el <b>código fuente de PHPMailer</b> e incluir los archivos necesarios en nuestro proyecto. Que puede ser empleado si no se desea instalar Composer por algún motivo en especial, como por ejemplo, al utilizar PHPMailer en un entorno de prueba</li>
                 </ol>
+                <div class="accordion" id="instalacion">
+                    <div class="accordion-item bg-transparent border border-dark">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-white bg-dark bg-gradient" type="button" data-bs-toggle="collapse" data-bs-target="#instalacion1" aria-expanded="false" aria-controls="instalacion1">
+                                1. Instalación usando Composer:
+                            </button>
+                        </h2>
+                        <div id="instalacion1" class="accordion-collapse collapse" data-bs-parent="#instalacion">
+                            <div class="accordion-body text-start">
+                                <p>Composer es un administrador de dependencias para PHP que permite descargar, instalar y mantener actualizadas las extensiones y librerías de PHP.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-transparent border border-dark">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-white bg-dark bg-gradient" type="button" data-bs-toggle="collapse" data-bs-target="#instalacion2" aria-expanded="false" aria-controls="instalacion2">
+                                2. Instalación usando código fuente:
+                            </button>
+                        </h2>
+                        <div id="instalacion2" class="accordion-collapse collapse" data-bs-parent="#instalacion">
+                            <div class="accordion-body text-start">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

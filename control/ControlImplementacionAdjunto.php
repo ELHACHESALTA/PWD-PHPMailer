@@ -35,9 +35,9 @@
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         
             if($mail->send()){
-                $respuesta .= " <br> El mensaje se ha enviado con exito!";
+                $respuesta .= "<br><br>El mensaje se ha enviado con exito!";
             } else {
-                $respuesta .= " <br> El mensaje no se ha podido enviar. El error es: {$mail->ErrorInfo}";
+                $respuesta .= "<br><br>El mensaje no se ha podido enviar. El error es: {$mail->ErrorInfo}";
             }
             return $respuesta;
         }
