@@ -32,9 +32,10 @@
 
     spl_autoload_register(function($class_name) {
         $directorys = array(
+            $_SESSION['ROOT'].'control/',
             $_SESSION['ROOT'].'modelo/',
             $_SESSION['ROOT'].'modelo/conector/',
-            $_SESSION['ROOT'].'control/',
+            $_SESSION['ROOT'].'util/',
         );
         foreach($directorys as $directory) {
             if (file_exists($directory.$class_name . '.php')) {

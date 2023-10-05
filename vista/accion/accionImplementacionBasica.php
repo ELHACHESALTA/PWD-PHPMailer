@@ -4,8 +4,8 @@
     include_once("../../configuracion.php");
 
     $datos = data_submitted();
-    $obj = new ControlImplementacionBasica();
-    $respuesta = $obj -> enviarCorreo($datos);
+    $obj = new Correo();
+    $respuesta = $obj -> enviarCorreoBasico($datos);
 ?>
 
 <h1 class="fw-bold">

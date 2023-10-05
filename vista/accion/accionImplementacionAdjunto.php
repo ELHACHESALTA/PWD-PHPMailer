@@ -4,8 +4,8 @@
     include_once("../../configuracion.php");
 
     $datos = data_submitted();
-    $obj = new ControlImplementacionAdjunto();
-    $respuesta = $obj->validaArchivo($datos);
+    $obj = new Correo();
+    $respuesta = $obj -> validaArchivo($datos);
 ?>
 
 <h1 class="fw-bold">
