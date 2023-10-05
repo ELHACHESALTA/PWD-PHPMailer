@@ -8,9 +8,12 @@
     $respuesta = $obj -> enviarCorreo($datos);
 ?>
 
-<h1>ACCIÓN IMPLEMENTACIÓN BÁSICA</h1>
+<h1 class="fw-bold">
+    <?php
+        echo $respuesta;
+    ?>
+</h1>
 
 <?php
-    echo $respuesta;
     include_once("../estructura/pie.php");
 ?>
