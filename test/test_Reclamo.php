@@ -1,6 +1,5 @@
 <?php
-    include_once("../modelo/Reclamo.php");
-    include_once("../modelo/conector/BaseDatos.php");
+    include_once '../configuracion.php';
 
     $obj = new Reclamo();
     $obj->setear(null, "ventas", "ultima descripcion", "hola123@gmail.com");

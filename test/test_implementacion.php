@@ -1,8 +1,6 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
-
-    include_once('../util/class/PHPMailer.php');
-    include_once('../util/class/SMTP.php');
+    include_once '../configuracion.php';
 
     $mail = new PHPMailer(true);
     //Server settings

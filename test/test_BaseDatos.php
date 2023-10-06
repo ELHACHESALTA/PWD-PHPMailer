@@ -1,5 +1,5 @@
 <?php
-    include_once("../modelo/conector/BaseDatos.php");
+    include_once '../configuracion.php';
     $objBaseDatos = new BaseDatos();
 
     // PRUEBA INSERTAR

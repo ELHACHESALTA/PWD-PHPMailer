@@ -1,8 +1,6 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
-
-    include_once('../util/class/PHPMailer.php');
-    include_once('../util/class/SMTP.php');
+    include_once '../configuracion.php';
 
     $mail = new PHPMailer(true);
     //Server settings
@@ -21,7 +19,7 @@
 
     //Attachments
     // esto se utiliza para enviar archivos
-    $mail->addAttachment("../archivos/tpLibrerias.pdf");    // archivo a enviar
+    $mail->addAttachment("../archivos/PHPMailer2.jpg");    // archivo a enviar
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
