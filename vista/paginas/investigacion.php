@@ -3,7 +3,7 @@
     include_once("../estructura/encabezado.php");
 ?>
 
-<button class="btn btn-lg text-center"><i class="bi bi-arrow-left-circle"></i></button>
+<a class="mt-1 btn btn-lg btn-dark text-center text-white float-start" href="inicio.php"><i class="bi bi-arrow-90deg-left"></i></a>
 <h1 class="mb-5 fw-bold">Investigación</h1>
 <div class="accordion" id="investigacion">
     <div class="accordion-item bg-transparent border border-dark">

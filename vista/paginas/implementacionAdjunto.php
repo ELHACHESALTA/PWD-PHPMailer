@@ -3,6 +3,7 @@
     include_once("../estructura/encabezado.php");
 ?>
 
+<a class="mt-1 btn btn-lg btn-dark text-center text-white float-start" href="implementacion.php"><i class="bi bi-arrow-90deg-left"></i></a>
 <div class="d-flex justify-content-center">
     <div class="w-50">
         <h1 class="mb-5 fw-bold">Envío con archivo adjunto</h1>
@@ -29,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="cuerpo">Cuerpo del Mail:</label>
-                <input type="text" id="cuerpo" name="cuerpo" class="form-control" required pattern="^[a-zA-Z][a-zA-Z0-9\s]*$">
+                <textarea class="form-control" id="cuerpo" name="cuerpo" required></textarea>
                 <div class="valid-feedback">
                     Correcto.
                 </div>

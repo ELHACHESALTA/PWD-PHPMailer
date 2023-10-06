@@ -8,3 +8,7 @@
     background-image: url(../img/banner-img.jpg);
     background-size: cover;
 }
+
+a img {
+    width: 30px;
+}

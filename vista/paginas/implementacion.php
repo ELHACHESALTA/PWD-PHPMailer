@@ -3,13 +3,34 @@
     include_once("../estructura/encabezado.php");
 ?>
 
-<div class="d-flex justify-content-center">
-    <div class="w-50">
-        <h1 class="mb-5 fw-bold">Implementación</h1>
-        <div class="list-group">
-            <a href="implementacionBasica.php" class="list-group-item list-group-item-action list-group-item-dark">Envío de correo estándar</a>
-            <a href="implementacionAdjunto.php" class="list-group-item list-group-item-action list-group-item-dark">Envío con archivo adjunto</a>
-            <a href="implementacionBD.php" class="list-group-item list-group-item-action list-group-item-dark">Envío con base de datos</a>
+<a class="mt-1 btn btn-lg btn-dark text-center text-white float-start" href="inicio.php"><i class="bi bi-arrow-90deg-left"></i></a>
+<h1 class="mb-5 fw-bold">Implementación</h1>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card text-white bg-dark">
+            <img src="../img/correoBasico.jpg" class="card-img-top" alt="correoAdjunto">
+            <div class="card-body">
+                <h5 class="card-title">Envío de correo estándar</h5>
+                <a href="implementacionBasica.php" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+            <div class="card text-white bg-dark">
+                <img src="../img/correoAdjunto.jpg" class="card-img-top" alt="correoAdjunto">
+                <div class="card-body">
+                    <h5 class="card-title">Envío con archivo adjunto</h5>
+                    <a href="implementacionAdjunto.php" class="stretched-link"></a>
+                </div>
+            </div>
+    </div>
+    <div class="col">
+        <div class="card text-white bg-dark">
+            <img src="../img/correoBD.jpg" class="card-img-top" alt="correoBD">
+            <div class="card-body">
+                <h5 class="card-title">Envío con base de datos</h5>
+                <a href="implementacionBD.php" class="stretched-link"></a>
+            </div>
         </div>
     </div>
 </div>
