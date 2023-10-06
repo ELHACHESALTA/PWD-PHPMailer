@@ -10,7 +10,6 @@
          */
         private function cargarObjeto($param){
             $obj = null;
-
             if (array_key_exists('numReclamo',$param) and array_key_exists('tipo',$param) and array_key_exists('descripcion',$param) and array_key_exists('contacto',$param)) {
                 $obj = new Reclamo();
                 $obj->setear($param['numReclamo'], $param['tipo'], $param['descripcion'], $param['contacto']);
@@ -51,14 +50,21 @@
          */
         public function alta($param){
             $resp = false;
-            // $param['NroDni'] = null;
+            $param['numReclamo'] = null;
             $objReclamo = $this->cargarObjeto($param);
-            // verEstructura($objReclamo);
             if ($objReclamo != null and $objReclamo->insertar()) {
-                $resp = true;
-                $mail = new Correo();
-                // $newParam = $param...;
-                $mail -> enviarCorreoBasico($param);
+                $numReclamo = $objReclamo->getNumReclamo();
+                $objCorreo = new Correo();
+                $newParam = ["nombre" => $param["nombre"], "cuerpo" => $param["descripcion"], "correo" => $param["contacto"], "numReclamo" => $numReclamo];
+                if ($param["tipo"] == "ventas"){
+                    if ($objCorreo->enviarCorreoVentaAVenta($newParam) && $objCorreo->enviarCorreoVentaAUsuario($newParam)){
+                        $resp = true;
+                    }
+                } elseif ($param["tipo"] == "tecnico") {
+                    if ($objCorreo->enviarCorreoTecnicoATecnico($newParam) && $objCorreo->enviarCorreoTecnicoAUsuario($newParam)){
+                        $resp = true;
+                    }
+                }
             }
             return $resp;
         }

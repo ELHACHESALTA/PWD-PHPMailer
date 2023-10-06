@@ -22,16 +22,16 @@
             <h4>Tipo de Reclamo:</h4>
             <div class="form-check">
                 <label class="form-check-label" for="tipoReclamoVentas">Ventas</label>
-                <input class="form-check-input" type="radio" name="tipoReclamo" id="tipoReclamoVentas" value="ventas" required>
+                <input class="form-check-input" type="radio" name="tipo" id="tipoReclamoVentas" value="ventas" required>
             </div>
             <div class="form-check">
                 <label class="form-check-label" for="tipoReclamoTecnico">Técnico</label>
-                <input class="form-check-input" type="radio" name="tipoReclamo" id="tipoReclamoTecnico" value="tecnico" required>
+                <input class="form-check-input" type="radio" name="tipo" id="tipoReclamoTecnico" value="tecnico" required>
             </div>
             <br>
             <div class="form-group">
                 <label for="cuerpo">Cuerpo del Mail:</label>
-                <textarea class="form-control" id="cuerpo" name="cuerpo" required></textarea>
+                <textarea class="form-control" id="descripcion" name="descripcion" required></textarea>
                 <div class="valid-feedback">
                     Correcto.
                 </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label for="correo">Correo de contacto:</label>
-                <input type="email" id="correo" name="correo" class="form-control" required>
+                <input type="email" id="contacto" name="contacto" class="form-control" required>
                 <div class="valid-feedback">
                     Correcto.
                 </div>
