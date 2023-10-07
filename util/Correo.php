@@ -24,6 +24,7 @@
             //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');        //Optional name
             //Content
             $mail->isHTML(true);                                        //Set email format to HTML
+            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
             $mail->Subject = $datos['asunto'];
             $mail->Body    = $datos['cuerpo'];
             // mensaje alternativo
@@ -63,6 +64,7 @@
             $mail->addAttachment("../../archivos/".$datos[0]["archivoAdjunto"]["name"]);
             //Content
             $mail->isHTML(true);                                        //Set email format to HTML
+            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
             $mail->Subject = $datos['asunto'];
             $mail->Body    = $datos['cuerpo'];
             // mensaje alternativo
@@ -108,7 +110,8 @@
 
             //Content
             $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->Subject = "Reclamo de ventas. Numero de reclamo: " . $datos["numReclamo"];
+            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
+            $mail->Subject = "Reclamo del área de ventas. Número de reclamo: " . $datos["numReclamo"];
             $mail->Body    = $datos['cuerpo'];
         
             if($mail->send()){
@@ -137,8 +140,9 @@
 
             //Content
             $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->Subject = "Reclamo realizado sobre el area de ventas";
-            $mail->Body    = "Muchas gracias: " . $datos["nombre"] . "! Hemos recibido su reclamo. Su numero de reclamo es: " . $datos["numReclamo"];
+            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
+            $mail->Subject = "Reclamo realizado sobre el área de ventas";
+            $mail->Body    = "Muchas gracias: " . $datos["nombre"] . "! Hemos recibido su reclamo con el N° " . $datos["numReclamo"];
         
             if($mail->send()){
                 $respuesta = true;
@@ -166,7 +170,8 @@
 
             //Content
             $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->Subject = "Reclamo de área Técnica. Numero de reclamo: " . $datos["numReclamo"];
+            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
+            $mail->Subject = "Reclamo del área Técnica. Número de reclamo: " . $datos["numReclamo"];
             $mail->Body    = $datos['cuerpo'];
         
             if($mail->send()){
@@ -195,8 +200,9 @@
 
             //Content
             $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->Subject = "Reclamo realizado sobre el area tecnica";
-            $mail->Body    = "Muchas gracias: " . $datos["nombre"] . "! Hemos recibido su reclamo. Su numero de reclamo es: " . $datos["numReclamo"];
+            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
+            $mail->Subject = "Reclamo realizado sobre el área técnica";
+            $mail->Body    = "Muchas gracias: " . $datos["nombre"] . "! Hemos recibido su reclamo con el N°: " . $datos["numReclamo"];
         
             if($mail->send()){
                 $respuesta = true;
