@@ -8,29 +8,29 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
         <div class="card text-white bg-dark">
-            <img src="../img/correoBasico.jpg" class="card-img-top" alt="correoAdjunto">
             <div class="card-body">
                 <h5 class="card-title">Envío de correo estándar</h5>
                 <a href="implementacionBasica.php" class="stretched-link"></a>
             </div>
+            <img src="../img/correoBasico.jpg" class="card-img-top rounded-bottom" alt="formularioCorreoEstandar">
         </div>
     </div>
     <div class="col">
             <div class="card text-white bg-dark">
-                <img src="../img/correoAdjunto.jpg" class="card-img-top" alt="correoAdjunto">
                 <div class="card-body">
                     <h5 class="card-title">Envío con archivo adjunto</h5>
                     <a href="implementacionAdjunto.php" class="stretched-link"></a>
                 </div>
+                <img src="../img/correoAdjunto.jpg" class="card-img-top rounded-bottom" alt="formularioCorreoAdjunto">
             </div>
     </div>
     <div class="col">
         <div class="card text-white bg-dark">
-            <img src="../img/correoBD.jpg" class="card-img-top" alt="correoBD">
             <div class="card-body">
                 <h5 class="card-title">Envío con base de datos</h5>
                 <a href="implementacionBD.php" class="stretched-link"></a>
             </div>
+            <img src="../img/correoBD.jpg" class="card-img-top rounded-bottom" alt="formularioCorreoBD">
         </div>
     </div>
 </div>

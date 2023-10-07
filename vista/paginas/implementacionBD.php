@@ -18,17 +18,18 @@
                     Ingrese su nombre.
                 </div>
             </div>
-            <br>
-            <h4>Tipo de Reclamo:</h4>
-            <div class="form-check">
-                <label class="form-check-label" for="tipoReclamoVentas">Ventas</label>
-                <input class="form-check-input" type="radio" name="tipo" id="tipoReclamoVentas" value="ventas" required>
+            <div class="form-group">
+                <label>Tipo de Reclamo:</label>
+                <br>
+                <div class="form-check-inline">
+                    <label class="form-check-label" for="tipoReclamoVentas">Ventas</label>
+                    <input class="form-check-input" type="radio" name="tipo" id="tipoReclamoVentas" value="ventas" required>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label" for="tipoReclamoTecnico">Técnico</label>
+                    <input class="form-check-input" type="radio" name="tipo" id="tipoReclamoTecnico" value="tecnico" required>
+                </div>
             </div>
-            <div class="form-check">
-                <label class="form-check-label" for="tipoReclamoTecnico">Técnico</label>
-                <input class="form-check-input" type="radio" name="tipo" id="tipoReclamoTecnico" value="tecnico" required>
-            </div>
-            <br>
             <div class="form-group">
                 <label for="cuerpo">Cuerpo del Mail:</label>
                 <textarea class="form-control" id="descripcion" name="descripcion" required></textarea>

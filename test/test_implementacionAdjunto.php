@@ -19,7 +19,7 @@
 
     //Attachments
     // esto se utiliza para enviar archivos
-    $mail->addAttachment("../archivos/PHPMailer2.jpg");    // archivo a enviar
+    $mail->addAttachment("../archivos/PHPMailer.jpg");    // archivo a enviar
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML

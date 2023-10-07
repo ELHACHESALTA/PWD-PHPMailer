@@ -73,6 +73,10 @@
             } else {
                 $respuesta .= "<br><br>El mensaje no se ha podido enviar. El error es: {$mail->ErrorInfo}";
             }
+
+            $rutaArchivoAdjunto = "../../archivos/".$datos[0]["archivoAdjunto"]["name"];
+            unlink($rutaArchivoAdjunto);
+
             return $respuesta;
         }
 
