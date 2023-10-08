@@ -2,82 +2,62 @@
     use PHPMailer\PHPMailer\PHPMailer;
     
     class Correo {
-        function enviarCorreoBasico($datos){
-            $mail = new PHPMailer();
-            //Server settings
-            $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'reclamoventas@gmail.com';              //correo
-            $mail->Password   = 'aveevgtlmqjcspbf';                     //contraseña
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
-            //Recipients
-            $mail->setFrom('reclamoventas@gmail.com', $datos['nombre']); // usuario que envía
-            $mail->addAddress('reclamoventas@gmail.com');     // mail que recibe 
-        
-            //Attachments
-            // esto se utiliza para enviar archivos
-            //$mail->addAttachment('/var/tmp/file.tar.gz');             //Add attachments
-            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');        //Optional name
-            //Content
-            $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
-            $mail->Subject = $datos['asunto'];
-            $mail->Body    = $datos['cuerpo'];
-            // mensaje alternativo
-            //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-        
-            if($mail->send()){
-                $respuesta = 'El mensaje se ha enviado con exito!';
-            } else {
-                $respuesta = "El mensaje no se ha podido enviar. El error es: {$mail->ErrorInfo}";
-            }
-            return $respuesta;
-        }
 
-        function enviarCorreoAdjunto($datos){
-            if (!copy($datos[0]["archivoAdjunto"]["tmp_name"], "../../archivos/".$datos[0]["archivoAdjunto"]["name"])) {
-                $respuesta = "ERROR: no se pudo cargar el archivo";
-            } else {
-                $respuesta = "Se pudo cargar el archivo exitosamente!";
-            }
+        /**
+         * Envía un correo llenandolo con la información contenida en el arreglo ingresado por parámetro.
+         * @param array $datos
+         * @return string
+         */
+        function enviarCorreo($datos){
             $mail = new PHPMailer();
-            //Server settings
-            $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'reclamoventas@gmail.com';              //correo
-            $mail->Password   = 'aveevgtlmqjcspbf';                     //contraseña
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
-            //Recipients
-            $mail->setFrom('reclamoventas@gmail.com', $datos['nombre']); // usuario que envía
-            $mail->addAddress('reclamoventas@gmail.com');     // mail que recibe 
-        
-            //Attachments
-            // esto se utiliza para enviar archivos
-            $mail->addAttachment("../../archivos/".$datos[0]["archivoAdjunto"]["name"]);
-            //Content
-            $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
-            $mail->Subject = $datos['asunto'];
-            $mail->Body    = $datos['cuerpo'];
-            // mensaje alternativo
-            //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-        
-            if($mail->send()){
-                $respuesta .= "<br><br>El mensaje se ha enviado con exito!";
-            } else {
-                $respuesta .= "<br><br>El mensaje no se ha podido enviar. El error es: {$mail->ErrorInfo}";
+
+            // Configuración del servidor.
+            $mail -> SMTPDebug  = 0;                                        // Salida de depuración detallada (0 - Deshabilitada / 2 - Habilitada).
+            $mail -> isSMTP();                                              // Configura el envío usando SMTP.
+            $mail -> Host       = "smtp.gmail.com";                         // Configura el servidor SMTP.
+            $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
+            $mail -> Username   = "reclamoventas@gmail.com";                // Correo que se va a utilizar para el envío.
+            $mail -> Password   = "aveevgtlmqjcspbf";                       // Contraseña del correo que se va a utilizar para el envío.
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
+
+            // Destinatarios
+            $mail -> setFrom("reclamoventas@gmail.com", $datos["nombre"]);  // Datos del remitente (correo y nombre).
+            $mail -> addAddress("reclamoventas@gmail.com");                 // Datos del destinatario (correo).
+
+            // Archivos adjuntos
+            if (isset($datos[0])) {
+                if (!copy($datos[0]["archivoAdjunto"]["tmp_name"], "../../archivos/".$datos[0]["archivoAdjunto"]["name"])) {
+                    $respuesta = "ERROR: No se pudo cargar el archivo";
+                } else {
+                    $respuesta = "Se pudo cargar el archivo exitosamente!";
+                }
+                $mail->addAttachment("../../archivos/".$datos[0]["archivoAdjunto"]["name"]);
             }
 
-            $rutaArchivoAdjunto = "../../archivos/".$datos[0]["archivoAdjunto"]["name"];
-            unlink($rutaArchivoAdjunto);
+            // Contenido
+            $mail -> isHTML(true);                                          // Configura el formato del correo en HTML.
+            $mail -> CharSet    = 'UTF-8';                                  // Codificación para caracteres especiales.
+            $mail -> Subject    = $datos['asunto'];                         // Asunto del correo.
+            $mail -> Body       = $datos['cuerpo'];                         // Cuerpo del correo.
+
+            if (isset($datos[0])) {
+                if($mail -> send()){
+                    $respuesta .= "<br><br>El mensaje se ha enviado con exito!";
+                } else {
+                    $respuesta .= "<br><br>El mensaje no se ha podido enviar. El error es: {$mail -> ErrorInfo}";
+                }
+
+                // Elimina los archivos adjuntos almacenados en el proyecto una vez que fueron enviados.
+                $rutaArchivoAdjunto = "../../archivos/".$datos[0]["archivoAdjunto"]["name"];
+                unlink($rutaArchivoAdjunto);
+            } else {
+                if($mail -> send()){
+                    $respuesta = "El mensaje se ha enviado con exito!";
+                } else {
+                    $respuesta = "El mensaje no se ha podido enviar. El error es: {$mail -> ErrorInfo}";
+                }
+            }
 
             return $respuesta;
         }
@@ -85,7 +65,7 @@
         function validaArchivo($datosFormulario){
             $tamanioArchivo = (($datosFormulario[0]["archivoAdjunto"]["size"]/1024)/1024);
             if ($tamanioArchivo < 25){
-                $respuesta = $this->enviarCorreoAdjunto($datosFormulario);
+                $respuesta = $this->enviarCorreo($datosFormulario);
             } else {
                 $respuesta = "El archivo no se ha podido enviar debido a que su tamaño es mayor a 25 mb";
             }

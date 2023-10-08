@@ -1,43 +1,41 @@
 <?php
 
     class AbmReclamo{
-        // Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
 
         /**
-         * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
+         * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto.
          * @param array $param
          * @return Reclamo
          */
-        private function cargarObjeto($param){
+        private function cargarObjeto($param) {
             $obj = null;
             if (array_key_exists('numReclamo',$param) and array_key_exists('tipo',$param) and array_key_exists('descripcion',$param) and array_key_exists('contacto',$param)) {
                 $obj = new Reclamo();
-                $obj->setear($param['numReclamo'], $param['tipo'], $param['descripcion'], $param['contacto']);
+                $obj -> setear($param['numReclamo'], $param['tipo'], $param['descripcion'], $param['contacto']);
             }
             return $obj;
         }
 
         /**
-         * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto que son claves
+         * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto que son claves.
          * @param array $param
          * @return Reclamo
          */
-        private function cargarObjetoConClave($param){
+        private function cargarObjetoConClave($param) {
             $obj = null;
-
             if ( isset($param['numReclamo']) ) {
                 $obj = new Reclamo();
-                $obj->setear($param['numReclamo'], null, null, null);
+                $obj -> setear($param['numReclamo'], null, null, null);
             }
             return $obj;
         }
 
         /**
-         * Corrobora que dentro del arreglo asociativo están seteados los campos claves
+         * Corrobora que dentro del arreglo asociativo están seteados los campos claves.
          * @param array $param
          * @return boolean
          */
-        private function seteadosCamposClaves($param){
+        private function seteadosCamposClaves($param) {
             $resp = false;
             if (isset($param['numReclamo'])) {
                 $resp = true;
@@ -46,22 +44,23 @@
         }
 
         /**
+         * Permite crear un objeto.
          * @param array $param
          */
-        public function alta($param){
+        public function alta($param) {
             $resp = false;
             $param['numReclamo'] = null;
-            $objReclamo = $this->cargarObjeto($param);
+            $objReclamo = $this -> cargarObjeto($param);
             if ($objReclamo != null and $objReclamo->insertar()) {
-                $numReclamo = $objReclamo->getNumReclamo();
+                $numReclamo = $objReclamo -> getNumReclamo();
                 $objCorreo = new Correo();
                 $newParam = ["nombre" => $param["nombre"], "cuerpo" => $param["descripcion"], "correo" => $param["contacto"], "numReclamo" => $numReclamo];
-                if ($param["tipo"] == "ventas"){
-                    if ($objCorreo->enviarCorreoVentaAVenta($newParam) && $objCorreo->enviarCorreoVentaAUsuario($newParam)){
+                if ($param["tipo"] == "ventas") {
+                    if ($objCorreo -> enviarCorreoVentaAVenta($newParam) && $objCorreo -> enviarCorreoVentaAUsuario($newParam)) {
                         $resp = true;
                     }
                 } elseif ($param["tipo"] == "tecnico") {
-                    if ($objCorreo->enviarCorreoTecnicoATecnico($newParam) && $objCorreo->enviarCorreoTecnicoAUsuario($newParam)){
+                    if ($objCorreo -> enviarCorreoTecnicoATecnico($newParam) && $objCorreo -> enviarCorreoTecnicoAUsuario($newParam)) {
                         $resp = true;
                     }
                 }
@@ -70,15 +69,15 @@
         }
 
         /**
-         * Permite eliminar un objeto 
+         * Permite eliminar un objeto.
          * @param array $param
          * @return boolean
          */
-        public function baja($param){
+        public function baja($param) {
             $resp = false;
-            if ($this->seteadosCamposClaves($param)) {
-                $objReclamo = $this->cargarObjetoConClave($param);
-                if ($objReclamo != null and $objReclamo->eliminar()) {
+            if ($this -> seteadosCamposClaves($param)) {
+                $objReclamo = $this -> cargarObjetoConClave($param);
+                if ($objReclamo != null and $objReclamo -> eliminar()) {
                     $resp = true;
                 }
             }
@@ -86,16 +85,15 @@
         }
 
         /**
-         * Permite modificar un objeto
+         * Permite modificar un objeto.
          * @param array $param
          * @return boolean
          */
         public function modificacion($param){
-            //echo "Estoy en modificación";
             $resp = false;
-            if ($this->seteadosCamposClaves($param)) {
-                $objReclamo = $this->cargarObjeto($param);
-                if ($objReclamo != null and $objReclamo->modificar()) {
+            if ($this -> seteadosCamposClaves($param)) {
+                $objReclamo = $this -> cargarObjeto($param);
+                if ($objReclamo != null and $objReclamo -> modificar()) {
                     $resp = true;
                 }
             }
@@ -103,11 +101,11 @@
         }
 
         /**
-         * Permite buscar un objeto
+         * Permite buscar un objeto.
          * @param array $param
          * @return boolean
          */
-        public function buscar($param){
+        public function buscar($param) {
             $where = " true ";
             if ($param <> null) {
                 if (isset($param['numReclamo'])) {
@@ -123,7 +121,6 @@
                     $where .= " and contacto ='" . $param['contacto'] . "'";
                 }
             }
-            // $arreglo = Reclamo::listar($where);
             $objReclamo = new Reclamo();
             $arreglo = $objReclamo -> listar($where);
             return $arreglo;

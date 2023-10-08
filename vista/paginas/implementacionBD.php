@@ -1,5 +1,5 @@
 <?php
-    $tituloPagina = "Implementación";
+    $tituloPagina = "Envío con base de datos";
     include_once("../estructura/encabezado.php");
 ?>
 
