@@ -250,7 +250,7 @@ $mail -> addBCC("correoCopiaOculta@destino.com", "Copia 2");;</b></code></pre>
         </h2>
         <div id="pregunta6" class="accordion-collapse collapse" data-bs-parent="#investigacion">
             <div class="accordion-body text-start">
-                <p>El servidor SMTP de Google es <b>ssmtp.gmail.com</b>. Utiliza conexiones <b>cifradas con SSL</b> y funciona en el <b>puerto 587</b>.</p>
+                <p>El servidor SMTP de Google es <b>smtp.gmail.com</b>. Utiliza conexiones <b>cifradas con SSL</b> y funciona en el <b>puerto 587</b>.</p>
                 <p>A su vez, el SMTP de Google requiere la autenticación con un nombre de usuario y contraseña antes de poder enviar el correo, y para esto es necesario tomar medidas adicionales para que funcione correctamente y sin dar errores:</p>
                 <ol>
                     <p><li>Ir a las <a href="https://myaccount.google.com/" target="_blank" class="link-danger">configuraciones</a> de la cuenta de gmail.</li></p>
