@@ -20,5 +20,8 @@
 | **Agüero Mendez, Guillermo Andres** | FAI-3844   | guillermo.aguero@est.fi.uncoma.edu.ar    | [guillermoagueronqn](https://github.com/guillermoagueronqn) |
 
 ## :warning: Instrucciones de Instalación
+- **REQUISITOS:** Tener instalado [Composer](https://getcomposer.org/)
 - Descargar el repositorio de la rama principal (main) y eliminar el -main al final del nombre de la carpeta
 - Guardar el repositorio en la carpeta raíz del servidor local (por ejemplo, htdocs en el caso de xampp)
+- Ejecutar el comando `composer install` para descargar la libreria PHPMailer utilizada en el proyecto
+- Abrir el proyecto desde [localhost/PWD-PHPMailer/index.php](http://localhost/PWD-PHPMailer/index.php).

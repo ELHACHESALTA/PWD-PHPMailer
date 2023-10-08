@@ -8,19 +8,6 @@
 <div class="accordion" id="investigacion">
     <div class="accordion-item bg-transparent border border-dark">
         <h2 class="accordion-header">
-            <button class="accordion-button collapsed text-white bg-dark bg-gradient" type="button" data-bs-toggle="collapse" data-bs-target="#pregunta1" aria-expanded="false" aria-controls="pregunta1">
-                ¿Qué es PHPMailer?
-            </button>
-        </h2>
-        <div id="pregunta1" class="accordion-collapse collapse" data-bs-parent="#investigacion">
-            <div class="accordion-body text-start">
-                <p>Es una clase llena de funcionalidades para la creación y transferencia de correo electrónico en PHP.</p>
-                <p>Aunque PHP cuenta con la función básica <b>mail()</b>, PHPMailer es más fácil de usar y nos brinda una sintaxis orientada a objetos más limpia. Como también nos provee asistencia para hacer uso de funciones necesarias en la actualidad como encriptación, autenticación, mensajes HTML y archivos adjuntos.</p>
-            </div>
-        </div>
-    </div>
-    <div class="accordion-item bg-transparent border border-dark">
-        <h2 class="accordion-header">
             <button class="accordion-button collapsed text-white bg-dark bg-gradient" type="button" data-bs-toggle="collapse" data-bs-target="#pregunta2" aria-expanded="false" aria-controls="pregunta2">
                 ¿Qué funcionalidades ofrece PHPMailer sobre mail()?
             </button>
