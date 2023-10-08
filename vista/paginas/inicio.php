@@ -36,6 +36,7 @@
                             <div class="card-body">
                                 <p>Es una clase llena de funcionalidades para la creación y transferencia de correo electrónico en PHP.</p>
                                 <p>Aunque PHP cuenta con la función básica <b>mail()</b>, PHPMailer es más fácil de usar y nos brinda una sintaxis orientada a objetos más limpia. Como también nos provee asistencia para hacer uso de funciones necesarias en la actualidad como encriptación, autenticación, mensajes HTML y archivos adjuntos.</p>
+                                <p>Los usos más habituales para esta libreria son la de crear formularios de contactos donde los usuarios cargan la información y la podemos recibir a través de un correo. Y también para el envío de corros másivos configurados mediante programación.</p>
                             </div>
                         </div>
                         <div class="row row-cols-1 row-cols-md-2 g-4">

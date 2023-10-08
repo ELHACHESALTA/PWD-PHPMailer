@@ -9,6 +9,7 @@
          * @return string
          */
         function enviarCorreo($datos){
+            // Se crea el objeto PHPMailer
             $mail = new PHPMailer();
 
             // Configuración del servidor.
@@ -18,12 +19,18 @@
             $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
             $mail -> Username   = "reclamoventas@gmail.com";                // Correo que se va a utilizar para el envío.
             $mail -> Password   = "aveevgtlmqjcspbf";                       // Contraseña del correo que se va a utilizar para el envío.
-            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el sistema de encriptación (TLS/SSL).
             $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
 
             // Destinatarios
             $mail -> setFrom("reclamoventas@gmail.com", $datos["nombre"]);  // Datos del remitente (correo y nombre).
             $mail -> addAddress("reclamoventas@gmail.com");                 // Datos del destinatario (correo).
+
+            // Contenido
+            $mail -> isHTML(true);                                          // Configura el formato del correo en HTML.
+            $mail -> CharSet    = "UTF-8";                                  // Codificación para caracteres especiales.
+            $mail -> Subject    = $datos["asunto"];                         // Asunto del correo.
+            $mail -> Body       = $datos["cuerpo"];                         // Cuerpo del correo.
 
             // Archivos adjuntos
             if (isset($datos[0])) {
@@ -32,17 +39,10 @@
                 } else {
                     $respuesta = "Se pudo cargar el archivo exitosamente!";
                 }
-                $mail->addAttachment("../../archivos/".$datos[0]["archivoAdjunto"]["name"]);
-            }
 
-            // Contenido
-            $mail -> isHTML(true);                                          // Configura el formato del correo en HTML.
-            $mail -> CharSet    = "UTF-8";                                  // Codificación para caracteres especiales.
-            $mail -> Subject    = $datos["asunto"];                         // Asunto del correo.
-            $mail -> Body       = $datos["cuerpo"];                         // Cuerpo del correo.
+                $mail -> addAttachment("../../archivos/".$datos[0]["archivoAdjunto"]["name"]);
 
-            if (isset($datos[0])) {
-                if($mail -> send()){
+                if ($mail -> send()) {
                     $respuesta .= "<br><br>El mensaje se ha enviado con exito!";
                 } else {
                     $respuesta .= "<br><br>El mensaje no se ha podido enviar. El error es: {$mail -> ErrorInfo}";
@@ -69,7 +69,7 @@
         function validaArchivo($datosFormulario) {
             $tamanioArchivo = (($datosFormulario[0]["archivoAdjunto"]["size"]/1024)/1024);
             if ($tamanioArchivo < 25) {
-                $respuesta = $this->enviarCorreo($datosFormulario);
+                $respuesta = $this -> enviarCorreo($datosFormulario);
             } else {
                 $respuesta = "El archivo no se ha podido enviar debido a que su tamaño es mayor a 25 mb";
             }
@@ -77,16 +77,17 @@
         }
 
         function enviarCorreoVentaAVenta($datos){
+            // Se crea el objeto PHPMailer
             $mail = new PHPMailer();
 
             // Configuración del servidor.
-            $mail -> SMTPDebug = 0;                                         // Salida de depuración detallada (0 - Deshabilitada / 2 - Habilitada).
+            $mail -> SMTPDebug  = 0;                                         // Salida de depuración detallada (0 - Deshabilitada / 2 - Habilitada).
             $mail -> isSMTP();                                              // Configura el envío usando SMTP.
             $mail -> Host       = "smtp.gmail.com";                         // Configura el servidor SMTP.
             $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
             $mail -> Username   = "reclamoventas@gmail.com";                // Correo que se va a utilizar para el envío.
             $mail -> Password   = "aveevgtlmqjcspbf";                       // Contraseña del correo que se va a utilizar para el envío.
-            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el sistema de encriptación (TLS/SSL).
             $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
 
             // Destinatarios
@@ -108,6 +109,7 @@
         }
 
         function enviarCorreoVentaAUsuario($datos){
+            // Se crea el objeto PHPMailer
             $mail = new PHPMailer();
 
             // Configuración del servidor.
@@ -117,7 +119,7 @@
             $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
             $mail -> Username   = "reclamoventas@gmail.com";                // Correo que se va a utilizar para el envío.
             $mail -> Password   = "aveevgtlmqjcspbf";                       // Contraseña del correo que se va a utilizar para el envío.
-            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el sistema de encriptación (TLS/SSL).
             $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
 
             // Destinatarios
@@ -139,6 +141,7 @@
         }
 
         public function enviarCorreoTecnicoATecnico($datos){
+            // Se crea el objeto PHPMailer
             $mail = new PHPMailer();
 
             // Configuración del servidor.
@@ -148,7 +151,7 @@
             $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
             $mail -> Username   = "reclamotecnicos@gmail.com";              // Correo que se va a utilizar para el envío.
             $mail -> Password   = "owisicrfengnsqdd";                       // Contraseña del correo que se va a utilizar para el envío.
-            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el sistema de encriptación (TLS/SSL).
             $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
 
             // Destinatarios
@@ -170,6 +173,7 @@
         }
 
         function enviarCorreoTecnicoAUsuario($datos){
+            // Se crea el objeto PHPMailer
             $mail = new PHPMailer();
 
             // Configuración del servidor.
