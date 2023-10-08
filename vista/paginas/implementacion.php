@@ -12,7 +12,7 @@
                 <h5 class="card-title">Envío de correo estándar</h5>
                 <a href="implementacionBasica.php" class="stretched-link"></a>
             </div>
-            <img src="../img/correoBasico.jpg" class="card-img-top rounded-bottom" alt="formularioCorreoEstandar">
+            <img src="../img/correoBasico.jpg" class="card-img-top rounded-bottom" alt="Formulario de envío de correo estándar">
         </div>
     </div>
     <div class="col">
@@ -21,7 +21,7 @@
                     <h5 class="card-title">Envío con archivo adjunto</h5>
                     <a href="implementacionAdjunto.php" class="stretched-link"></a>
                 </div>
-                <img src="../img/correoAdjunto.jpg" class="card-img-top rounded-bottom" alt="formularioCorreoAdjunto">
+                <img src="../img/correoAdjunto.jpg" class="card-img-top rounded-bottom" alt="Formulario de envío con archivo adjunto">
             </div>
     </div>
     <div class="col">
@@ -30,7 +30,7 @@
                 <h5 class="card-title">Envío con base de datos</h5>
                 <a href="implementacionBD.php" class="stretched-link"></a>
             </div>
-            <img src="../img/correoBD.jpg" class="card-img-top rounded-bottom" alt="formularioCorreoBD">
+            <img src="../img/correoBD.jpg" class="card-img-top rounded-bottom" alt="Formulario de envío con base de datos">
         </div>
     </div>
 </div>

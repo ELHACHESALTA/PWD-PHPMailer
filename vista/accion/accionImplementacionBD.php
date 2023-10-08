@@ -12,7 +12,7 @@
 <h1 class="fw-bold">
     <?php
         if ($respuesta){
-            echo "Su reclamo ha sido recibido correctamente! Revise su casilla de correo para obtener su número de reclamo.";
+            echo "Su reclamo ha sido recibido correctamente! <br> <br> Revise su casilla de correo para obtener su número de reclamo.";
         } else {
             echo "No se pudo enviar su reclamo. Vuelva a intentarlo.";
         }

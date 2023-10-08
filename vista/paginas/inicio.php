@@ -29,7 +29,7 @@
                 <!-- Contenido Principal INICIO -->
                 <div class="container mt-2 d-grid gap-5">
                     <div class="py-5">
-                        <img src="../img/PHPMailer.jpg" class="img-fluid rounded" alt="Responsive image">
+                        <img src="../img/PHPMailer.jpg" class="img-fluid rounded" alt="PHP Mailer">
                         <br> <br>
                         <div class="card text-bg-dark mb-3">
                             <div class="card-header"><h5>¿Qué es PHPMailer?</h5></div>
