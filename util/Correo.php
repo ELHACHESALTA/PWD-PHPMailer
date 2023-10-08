@@ -37,9 +37,9 @@
 
             // Contenido
             $mail -> isHTML(true);                                          // Configura el formato del correo en HTML.
-            $mail -> CharSet    = 'UTF-8';                                  // Codificación para caracteres especiales.
-            $mail -> Subject    = $datos['asunto'];                         // Asunto del correo.
-            $mail -> Body       = $datos['cuerpo'];                         // Cuerpo del correo.
+            $mail -> CharSet    = "UTF-8";                                  // Codificación para caracteres especiales.
+            $mail -> Subject    = $datos["asunto"];                         // Asunto del correo.
+            $mail -> Body       = $datos["cuerpo"];                         // Cuerpo del correo.
 
             if (isset($datos[0])) {
                 if($mail -> send()){
@@ -52,7 +52,7 @@
                 $rutaArchivoAdjunto = "../../archivos/".$datos[0]["archivoAdjunto"]["name"];
                 unlink($rutaArchivoAdjunto);
             } else {
-                if($mail -> send()){
+                if ($mail -> send()) {
                     $respuesta = "El mensaje se ha enviado con exito!";
                 } else {
                     $respuesta = "El mensaje no se ha podido enviar. El error es: {$mail -> ErrorInfo}";
@@ -62,9 +62,13 @@
             return $respuesta;
         }
 
-        function validaArchivo($datosFormulario){
+        /**
+         * Valida que el archivo adjunto no supere los 25Mb.
+         * @return string
+         */
+        function validaArchivo($datosFormulario) {
             $tamanioArchivo = (($datosFormulario[0]["archivoAdjunto"]["size"]/1024)/1024);
-            if ($tamanioArchivo < 25){
+            if ($tamanioArchivo < 25) {
                 $respuesta = $this->enviarCorreo($datosFormulario);
             } else {
                 $respuesta = "El archivo no se ha podido enviar debido a que su tamaño es mayor a 25 mb";
@@ -74,27 +78,28 @@
 
         function enviarCorreoVentaAVenta($datos){
             $mail = new PHPMailer();
-            //Server settings
-            $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'reclamoventas@gmail.com';              //correo
-            $mail->Password   = 'aveevgtlmqjcspbf';                     //contraseña
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
-            //Recipients
-            $mail->setFrom('reclamoventas@gmail.com', $datos['nombre']); // usuario que envía
-            $mail->addAddress('reclamoventas@gmail.com');     // mail que recibe 
 
-            //Content
-            $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
-            $mail->Subject = "Reclamo del área de ventas. Número de reclamo: " . $datos["numReclamo"];
-            $mail->Body    = $datos['cuerpo'];
-        
-            if($mail->send()){
+            // Configuración del servidor.
+            $mail -> SMTPDebug = 0;                                         // Salida de depuración detallada (0 - Deshabilitada / 2 - Habilitada).
+            $mail -> isSMTP();                                              // Configura el envío usando SMTP.
+            $mail -> Host       = "smtp.gmail.com";                         // Configura el servidor SMTP.
+            $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
+            $mail -> Username   = "reclamoventas@gmail.com";                // Correo que se va a utilizar para el envío.
+            $mail -> Password   = "aveevgtlmqjcspbf";                       // Contraseña del correo que se va a utilizar para el envío.
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
+
+            // Destinatarios
+            $mail -> setFrom("reclamoventas@gmail.com", $datos["nombre"]);  // Datos del remitente (correo y nombre).
+            $mail -> addAddress("reclamoventas@gmail.com");                 // Datos del destinatario (correo).
+
+            // Contenido
+            $mail -> isHTML(true);                                          // Configura el formato del correo en HTML.
+            $mail -> CharSet    = "UTF-8";                                  // Codificación para caracteres especiales.
+            $mail -> Subject    = "Reclamo del área de ventas. Número de reclamo: " . $datos["numReclamo"]; // Asunto del correo.
+            $mail -> Body       = $datos["cuerpo"];                         // Cuerpo del correo.
+
+            if ($mail -> send()) {
                 $respuesta = true;
             } else {
                 $respuesta = false;
@@ -104,27 +109,28 @@
 
         function enviarCorreoVentaAUsuario($datos){
             $mail = new PHPMailer();
-            //Server settings
-            $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'reclamoventas@gmail.com';              //correo
-            $mail->Password   = 'aveevgtlmqjcspbf';                     //contraseña
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
-            //Recipients
-            $mail->setFrom('reclamoventas@gmail.com', "Departamento de Ventas"); // usuario que envía
-            $mail->addAddress($datos["correo"]);     // mail que recibe 
 
-            //Content
-            $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
-            $mail->Subject = "Reclamo realizado sobre el área de ventas";
-            $mail->Body    = "Muchas gracias: " . $datos["nombre"] . "! Hemos recibido su reclamo con el N° " . $datos["numReclamo"];
-        
-            if($mail->send()){
+            // Configuración del servidor.
+            $mail -> SMTPDebug  = 0;                                        // Salida de depuración detallada (0 - Deshabilitada / 2 - Habilitada).
+            $mail -> isSMTP();                                              // Configura el envío usando SMTP.
+            $mail -> Host       = "smtp.gmail.com";                         // Configura el servidor SMTP.
+            $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
+            $mail -> Username   = "reclamoventas@gmail.com";                // Correo que se va a utilizar para el envío.
+            $mail -> Password   = "aveevgtlmqjcspbf";                       // Contraseña del correo que se va a utilizar para el envío.
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
+
+            // Destinatarios
+            $mail -> setFrom("reclamoventas@gmail.com", "Departamento de Ventas");  // Datos del remitente (correo y nombre).
+            $mail -> addAddress($datos["correo"]);                          // Datos del destinatario (correo).
+
+            // Contenido
+            $mail -> isHTML(true);                                          // Configura el formato del correo en HTML.
+            $mail -> CharSet    = "UTF-8";                                  // Codificación para caracteres especiales.
+            $mail -> Subject    = "Reclamo realizado sobre el área de ventas";  // Asunto del correo.
+            $mail -> Body       = "Muchas gracias: " . $datos["nombre"] . "! Hemos recibido su reclamo con el N° " . $datos["numReclamo"];  // Cuerpo del correo.
+
+            if ($mail -> send()) {
                 $respuesta = true;
             } else {
                 $respuesta = false;
@@ -134,27 +140,28 @@
 
         public function enviarCorreoTecnicoATecnico($datos){
             $mail = new PHPMailer();
-            //Server settings
-            $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'reclamotecnicos@gmail.com';            //correo
-            $mail->Password   = 'owisicrfengnsqdd';                     //contraseña
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
-            //Recipients
-            $mail->setFrom('reclamotecnicos@gmail.com', $datos['nombre']); // usuario que envía
-            $mail->addAddress('reclamotecnicos@gmail.com');     // mail que recibe 
 
-            //Content
-            $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
-            $mail->Subject = "Reclamo del área Técnica. Número de reclamo: " . $datos["numReclamo"];
-            $mail->Body    = $datos['cuerpo'];
-        
-            if($mail->send()){
+            // Configuración del servidor.
+            $mail -> SMTPDebug  = 0;                                        // Salida de depuración detallada (0 - Deshabilitada / 2 - Habilitada).
+            $mail -> isSMTP();                                              // Configura el envío usando SMTP.
+            $mail -> Host       = "smtp.gmail.com";                         // Configura el servidor SMTP.
+            $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
+            $mail -> Username   = "reclamotecnicos@gmail.com";              // Correo que se va a utilizar para el envío.
+            $mail -> Password   = "owisicrfengnsqdd";                       // Contraseña del correo que se va a utilizar para el envío.
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
+
+            // Destinatarios
+            $mail -> setFrom("reclamotecnicos@gmail.com", $datos["nombre"]);// Datos del remitente (correo y nombre).
+            $mail -> addAddress("reclamotecnicos@gmail.com");               // Datos del destinatario (correo).
+
+            // Contenido
+            $mail -> isHTML(true);                                          // Configura el formato del correo en HTML.
+            $mail -> CharSet    = "UTF-8";                                  // Codificación para caracteres especiales.
+            $mail -> Subject    = "Reclamo del área Técnica. Número de reclamo: " . $datos["numReclamo"];   // Asunto del correo.
+            $mail -> Body       = $datos["cuerpo"];                         // Cuerpo del correo.
+
+            if ($mail -> send()) {
                 $respuesta = true;
             } else {
                 $respuesta = false;
@@ -164,33 +171,35 @@
 
         function enviarCorreoTecnicoAUsuario($datos){
             $mail = new PHPMailer();
-            //Server settings
-            $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'reclamotecnicos@gmail.com';            //correo
-            $mail->Password   = 'owisicrfengnsqdd';                     //contraseña
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
-            //Recipients
-            $mail->setFrom('reclamotecnicos@gmail.com', "Departamento Tecnico"); // usuario que envía
-            $mail->addAddress($datos["correo"]);     // mail que recibe 
 
-            //Content
-            $mail->isHTML(true);                                        //Set email format to HTML
-            $mail->CharSet = 'UTF-8';                                   //Se establece codificación para caracteres especiales
-            $mail->Subject = "Reclamo realizado sobre el área técnica";
-            $mail->Body    = "Muchas gracias: " . $datos["nombre"] . "! Hemos recibido su reclamo con el N°: " . $datos["numReclamo"];
-        
-            if($mail->send()){
+            // Configuración del servidor.
+            $mail -> SMTPDebug  = 0;                                        // Salida de depuración detallada (0 - Deshabilitada / 2 - Habilitada).
+            $mail -> isSMTP();                                              // Configura el envío usando SMTP.
+            $mail -> Host       = "smtp.gmail.com";                         // Configura el servidor SMTP.
+            $mail -> SMTPAuth   = true;                                     // Habilita la autenticación SMTP.
+            $mail -> Username   = "reclamotecnicos@gmail.com";              // Correo que se va a utilizar para el envío.
+            $mail -> Password   = "owisicrfengnsqdd";                       // Contraseña del correo que se va a utilizar para el envío.
+            $mail -> SMTPSecure = "ssl";                                    // Habilita el cifrado implícito (TLS/SSL).
+            $mail -> Port       = 465;                                      // Puerto TCP al que conectarse.
+
+            // Destinatarios
+            $mail -> setFrom("reclamotecnicos@gmail.com", "Departamento Tecnico");  // Datos del remitente (correo y nombre).
+            $mail -> addAddress($datos["correo"]);                          // Datos del destinatario (correo).
+
+            // Contenido
+            $mail -> isHTML(true);                                          // Configura el formato del correo en HTML.
+            $mail -> CharSet    = "UTF-8";                                  // Codificación para caracteres especiales.
+            $mail -> Subject    = "Reclamo realizado sobre el área técnica";// Asunto del correo.
+            $mail -> Body       = "Muchas gracias: " . $datos["nombre"] . "! Hemos recibido su reclamo con el N°: " . $datos["numReclamo"]; // Cuerpo del correo.
+
+            if ($mail->send()) {
                 $respuesta = true;
             } else {
                 $respuesta = false;
             }
             return $respuesta;
         }
+
     }
 
 ?>
